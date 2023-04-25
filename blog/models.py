@@ -27,16 +27,16 @@ class User(db.Model, UserMixin):
         return f"{self.name}"
 
     def set_password(self, password):
-        n, r, p = 16384, 16, 2
+        n, r, p = 16384, 8, 1
         salt = urandom(24)
         self.salt = f"{b64encode(salt).decode()} {n} {r} {p}"
-        self.hash = scrypt(password, salt=salt, n=n, r=r, p=p)
+        self.hash = scrypt(password.encode(), salt=salt, n=n, r=r, p=p)
 
     def check_password(self, password):
         salt, n, r, p = self.salt.split()
         salt = b64decode(salt.encode())
         n, r, p = int(n), int(r), int(p)
-        return self.hash == scrypt(password, salt=salt, n=n, r=r, p=p)
+        return self.hash == scrypt(password.encode(), salt=salt, n=n, r=r, p=p)
 
 
 class Post(db.Model):
