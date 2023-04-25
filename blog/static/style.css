@@ -15,3 +15,7 @@ body {
 .row label {
     width: 60px;
 }
+
+p.error {
+    color: red;
+}
