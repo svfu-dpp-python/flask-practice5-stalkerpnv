@@ -1,6 +1,6 @@
 from flask import abort, flash, render_template, redirect, request, session, url_for
 
-from .models import db, User, Comment, Post
+from .models import db, User, Post
 from .forms import LoginForm
 
 
