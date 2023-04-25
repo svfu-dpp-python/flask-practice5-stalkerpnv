@@ -5,15 +5,12 @@
 {{ post.text|safe }}
 <hr>
 <h3>Комментарии</h3>
-{% for c in post.comments %}
-<p>{{ c.text }}</p>
-{% endfor %}
+{# список комментариев #}
 <hr>
 <h3>Введите ваш комментарий</h3>
 <form method="post">
     {{ form.hidden_tag() }}
-    <p>{{ form.text.label }}</p>
-    <p>{{ form.text }}</p>
+    {# поле ввода для комментария #}
     <p><input type="submit" value="Добавить"></p>
 </form>
 {% endblock %}
