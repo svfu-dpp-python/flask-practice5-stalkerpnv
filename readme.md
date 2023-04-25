@@ -55,17 +55,6 @@ flask run
 1. Добавьте модели для хранения данных пользователей, постов и комментариев
 
 ```python
-class User(db.Model):
-  pk = db.Column(db.Integer(), primary_key=True)
-  ...
-  
-class Post(db.Model):
-  pk = db.Column(db.Integer(), primary_key=True)
-  ...
-  
-class Comment(db.Model):
-  pk = db.Column(db.Integer(), primary_key=True)
-  ...
 ```
 
 1. Добавьте шаблоны для просмотра постов
