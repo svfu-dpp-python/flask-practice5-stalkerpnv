@@ -44,6 +44,16 @@ class Post(db.Model):
     title = db.Column(db.String(75), nullable=False)
     text = db.Column(db.Text)
     published = db.Column(db.DateTime, nullable=False)
-
+    comments = db.relationship("Comment", back_populates="post")
     def __str__(self):
         return self.title
+    
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(25), nullable=False, unique=True)
+    text = db.Column(db.Text)
+    published = db.Column(db.DateTime, nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey("post.id", name="post"))
+    post = db.relationship("Post", back_populates="comments")
+    def __str__(self):
+        return 'Comment by {} on {}'.format(self.username, self.post)

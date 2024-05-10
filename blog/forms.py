@@ -7,3 +7,7 @@ from wtforms.widgets import TextArea
 class LoginForm(FlaskForm):
     username = StringField("Логин", validators=[DataRequired()])
     password = PasswordField("Пароль", validators=[DataRequired()])
+
+class CommentForm(FlaskForm):
+    text = StringField("Текст", validators=[DataRequired()])
+    username = StringField("Автор", validators=[DataRequired()])
